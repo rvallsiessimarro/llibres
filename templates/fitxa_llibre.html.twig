@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+{% block title %}Dades Llibres{% endblock %}
+{% block body %}
+    <h1>Fitxa del llibre</h1>
+    {% if llibre %}
+        {{ include ('dades_llibre.html.twig', { 'llibre': llibre }) }}
+        <p>
+            <a href="{{ path('inici') }}">
+                <img src="{{ asset('img/trobat.png') }}" alt="Llibre trobat" class="imatge" />
+            </a>
+        </p>
+    {% else %}
+        <p>Llibre no trobat<br/>
+            <a href="{{ path('inici') }}">
+                <img src="{{ asset('img/notrobat.png') }}" alt="Llibre no trobat" class="imatge" />
+            </a>
+        </p>
+    {% endif %}
+{% endblock %}

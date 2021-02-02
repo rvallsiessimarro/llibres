@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+{% block title %}Llibres{% endblock %}
+{% block body %}
+    <h1>Biblioteca Personal NomAlumne</h1>
+    <p>Pàgina d'inici <br/>
+    Projecte Symfony 2n DAW <br/>
+    Curs 20/21<br/>
+    <a href="{{ path('fitxa_llibre', {'isbn': 'J91F56'}) }}">
+        <img src="{{ asset('img/llibres.png') }}" alt="imatge inici" class="imatge" />
+    </a>
+    </p>
+{% endblock %}
