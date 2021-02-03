@@ -6,13 +6,15 @@
         {{ include ('dades_llibre.html.twig', { 'llibre': llibre }) }}
         <p>
             <a href="{{ path('inici') }}">
-                <img src="{{ asset('img/trobat.png') }}" alt="Llibre trobat" class="imatge" />
+                Torna a l'inici<img src="{{ asset('img/tornar.png') }}" alt="Tornar inici" class="tornar" />
             </a>
         </p>
     {% else %}
         <p>Llibre no trobat<br/>
+            <img src="{{ asset('img/notrobat.png') }}" alt="Llibre no trobat" class="imatge" />
+            <br/>
             <a href="{{ path('inici') }}">
-                <img src="{{ asset('img/notrobat.png') }}" alt="Llibre no trobat" class="imatge" />
+                Torna a l'inici<img src="{{ asset('img/tornar.png') }}" alt="Tornar inici" class="tornar" />
             </a>
         </p>
     {% endif %}

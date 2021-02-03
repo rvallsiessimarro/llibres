@@ -6,7 +6,21 @@ h1, h2, h3 {
     color: #ffff66;
     border: solid #ffff66 1px;
 }
+
 .imatge{
     width: 200px;
     margin: 10px;
+    vertical-align: middle;
+}
+
+.tornar{
+    width: 50px;
+    margin: 10px;
+    vertical-align: middle;
+}
+
+ul li{
+    font-family: arial;
+    line-height: 30px;
+
 }
