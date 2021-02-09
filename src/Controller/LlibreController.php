@@ -1,11 +1,13 @@
 <?php
 namespace App\Controller;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\BDProvaLlibres;  //importem servei creat per a les dades dels llibres en array
 use App\Entity\Llibre;
 use App\Entity\Editorial;
+use App\Form\LlibreType;
 class LlibreController extends AbstractController
 {
 private $llibres;
@@ -15,6 +17,54 @@ public function __construct(BDProvaLlibres $dades)
     {
 	    $this->llibres = $dades->get();
     }
+
+    /**
+    * @Route("/llibre/nou", name="nou_llibre")
+    */
+    public function nou(Request $request)
+    {
+    $llibre = new Llibre();
+    $formulari = $this->createForm(LlibreType::class, $llibre);
+
+    //enviament
+    $formulari->handleRequest($request);
+    if ($formulari->isSubmitted() && $formulari->isValid())
+    {
+        $llibre = $formulari->getData();
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($llibre);
+        $entityManager->flush(); 
+        return $this->redirectToRoute('inici');
+    }
+
+    return $this->render('nou.html.twig',
+                    array('formulari' => $formulari->createView()));
+    }
+
+    /**
+    * @Route("/llibre/editar/{isbn}", name="editar_llibre")
+    */
+    public function editar(Request $request, $isbn)
+    {
+    $repositori = $this->getDoctrine()->getRepository(Llibre::class);
+    $llibre = $repositori->find($isbn);
+    $formulari = $this->createForm(LlibreType::class, $llibre);
+
+    $formulari->handleRequest($request);
+    if ($formulari->isSubmitted() && $formulari->isValid())
+    {
+        $llibre = $formulari->getData();
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->persist($llibre);
+        $entityManager->flush(); 
+        return $this->redirectToRoute('inici');
+    }
+
+    return $this->render('nou.html.twig',
+                    array('formulari' => $formulari->createView()));
+    }
+
+
 
     /**
     * @Route("/llibre/pagines/{pagines}", name="filtar_pagines")

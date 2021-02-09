@@ -2,6 +2,7 @@
 {% block title %}Llibres{% endblock %}
 {% block body %}
     <h1>Biblioteca Personal NomAlumne</h1>
+   
     <p>Pàgina d'inici <br/>
     Projecte Symfony 2n DAW <br/>
     Curs 20/21<br/>
@@ -10,6 +11,9 @@
         <li>
             <a href="{{ path('fitxa_llibre', {'isbn': llibre.isbn}) }}">
                 {{ llibre.titol }}
+            </a>
+            <a href="{{ path('editar_llibre', {'isbn': llibre.isbn}) }}">
+                <img src="{{ asset('img/editar.png') }}" alt="Edita llibre" class="editar" />
             </a>
         </li>
 
