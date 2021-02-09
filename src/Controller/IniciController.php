@@ -4,6 +4,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\BDProvaLlibres;  //importem servei creat per a les dades dels llibres en array
+use App\Entity\Llibre;
 class IniciController extends AbstractController
 {
 	private $llibres;
@@ -14,15 +15,18 @@ class IniciController extends AbstractController
 	    $this->llibres = $dades->get();
     }*/
 	// Utilitzant l'associació per nom creada en services.yaml
-	public function __construct($bdProva)
+	/*public function __construct($bdProva)
     {
 	    $this->llibres = $bdProva->get();
-    }
+    }*/
+	
 	/**
 	* @Route("/", name="inici")
 	*/
 	public function inici()
 	{
+		$repositori = $this->getDoctrine()->getRepository(Llibre::class);
+	  	$this->llibres = $repositori->findAll();
 		return $this->render('inici.html.twig',
 				array('llibres' => $this->llibres)); //li passem tots els llibres a la plantilla
 	}
