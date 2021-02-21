@@ -1,0 +1,12 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}
+    Llibres: Error
+{% endblock %}
+{% block body %}
+    <h1>Alguna cosa no va bé en el servidor</h1>
+    <h2>Error</h2>
+    <p>        
+        <img src="{{ asset('img/internal.jpg') }}" alt="no autoritzat" class="error" />
+    </p>
+{% endblock %}

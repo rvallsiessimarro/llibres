@@ -1,0 +1,12 @@
+{# templates/bundles/TwigBundle/Exception/error404.html.twig #}
+{% extends 'base.html.twig' %}
+{% block title %}
+    Llibres: Pàgina no trobada
+{% endblock %}
+{% block body %}
+    <h1>No s'ha trobat la pàgina</h1>
+    <h2>Error 404</h2>
+    <p>        
+        <img src="{{ asset('img/notfound.jpg') }}" alt="no trobat" class="error" />
+    </p>
+{% endblock %}

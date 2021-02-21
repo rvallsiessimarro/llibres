@@ -1,0 +1,41 @@
+{% extends 'base.html.twig' %}
+{% block title %}Usuaris{% endblock %}
+{% block body %}
+    <h1>Usuaris Biblioteca Personal NomAlumne</h1>
+    <table id="taulausuaris">
+    <tr> 
+        <td>Id</td>
+        <td>Login</td>
+        <td>Password</td>
+        <td>Email</td>
+        <td>Rol</td>
+        <td>Editar</td>
+        <td>Eliminar</td>
+    </tr>
+    {% for usuari in usuaris %}
+        <tr>
+            <td>{{ usuari.id }}</td>
+            <td>{{ usuari.login }}</td>
+            <td>{{ usuari.password }}</td>
+            <td>{{ usuari.email }}</td>
+            <td>{{ usuari.rol }}</td>
+            <td>
+                <a href="{{ path('editar_usuari', {'id': usuari.id}) }}">
+                    <img src="{{ asset('img/editar.png') }}" alt="Edita usuari" class="editar" />
+                </a>        
+            </td>
+            <td>
+                <a href="{{ path('eliminar_usuari', {'id': usuari.id}) }}">
+                    <img src="{{ asset('img/eliminar.png') }}" alt="Elimina usuari" class="editar" />
+                </a>        
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    {% if is_granted('ROLE_ADMIN') %}
+    <a href ="{{ path('nou_usuari') }}">
+    Crear un usuari nou
+   </a>
+    {% endif %}
+{% endblock %}

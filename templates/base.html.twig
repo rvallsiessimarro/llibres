@@ -23,6 +23,17 @@
             <a href="{{ path('nou_llibre') }}">
                Llibre nou
             </a>
+            {% if is_granted('ROLE_ADMIN') %} -
+                <a href ="{{ path('usuari') }}">
+                    Gestió d'usuaris
+                </a>
+            {% endif %}
+            {% if is_granted('IS_AUTHENTICATED_FULLY') %} - 
+                Benvingut/da {{ app.user.username }}!  -
+                <a href ="{{ path('logout') }}">
+                    Tancar sessió
+                </a>
+            {% endif %}
         {% endblock %}
         {% block body %}
         {% endblock %}

@@ -6,6 +6,18 @@ h1, h2, h3 {
     color: #ffff66;
     border: solid #ffff66 1px;
 }
+#taulausuaris{
+    margin:10px auto;
+    border:solid 1px black;
+    width:90%;
+    background-color:#CCC;
+}
+#taulausuaris tr td{
+    border:solid 1px black;
+    padding: 5px;
+    background-color:#FFF;
+    text-align:center;
+}
 
 .imatge{
     width: 200px;
@@ -22,6 +34,10 @@ h1, h2, h3 {
     width: 30px;
     margin: 10px;
     vertical-align: middle;
+}
+
+.error{
+    width:400px;
 }
 
 ul li{

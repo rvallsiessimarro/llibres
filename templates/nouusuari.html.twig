@@ -1,0 +1,8 @@
+{% extends 'base.html.twig' %}
+{% block title %}Usuari{% endblock %}
+{% block body %}
+<h1>Inserir nou usuari</h1>
+{{ form_start(formulari, {'attr': {'novalidate': 'novalidate'}}) }}
+{{ form_widget(formulari) }}
+{{ form_end(formulari) }}
+{% endblock %}

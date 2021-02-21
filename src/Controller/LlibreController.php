@@ -33,8 +33,13 @@ public function __construct(BDProvaLlibres $dades)
         $llibre = $formulari->getData();
         $entityManager = $this->getDoctrine()->getManager();
         $entityManager->persist($llibre);
-        $entityManager->flush(); 
-        return $this->redirectToRoute('inici');
+        try{
+            $entityManager->flush(); 
+            return $this->redirectToRoute('inici');
+        }catch(\Exception $e){
+            return $this->Response('Error inserint llibre');
+        }
+        
     }
 
     return $this->render('nou.html.twig',
