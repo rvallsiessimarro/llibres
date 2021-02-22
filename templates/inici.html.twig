@@ -2,10 +2,12 @@
 {% block title %}Llibres{% endblock %}
 {% block body %}
     <h1>Biblioteca Personal NomAlumne</h1>
-   
+    <h2>{{ data | capitalize }}</h2>
     <p>Pàgina d'inici <br/>
     Projecte Symfony 2n DAW <br/>
     Curs 20/21<br/>
+    </p>
+    
     <ul>
     {% for llibre in llibres %}
         <li>

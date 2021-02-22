@@ -38,4 +38,8 @@ class Editorial
 
         return $this;
     }
+    public function __toString(){
+        //per tornar el nom de l'editorial com un string
+        return $this->nom;
+    }
 }

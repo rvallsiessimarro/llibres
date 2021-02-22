@@ -5,6 +5,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Service\BDProvaLlibres;  //importem servei creat per a les dades dels llibres en array
 use App\Entity\Llibre;
+use Jenssegers\Date\Date;
 class IniciController extends AbstractController
 {
 	private $llibres;
@@ -27,8 +28,10 @@ class IniciController extends AbstractController
 	{
 		$repositori = $this->getDoctrine()->getRepository(Llibre::class);
 	  	$this->llibres = $repositori->findAll();
+		Date::setLocale('CA_es');
+		$data = Date::now()->format('l j F \d\e Y, \c\a\r\r\e\g\a\t \a \l\e\s H:i:s');
 		return $this->render('inici.html.twig',
-				array('llibres' => $this->llibres)); //li passem tots els llibres a la plantilla
+				array('llibres' => $this->llibres,'data' => $data)); //li passem tots els llibres a la plantilla
 	}
 }
 ?>

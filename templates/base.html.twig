@@ -28,6 +28,11 @@
                     Gestió d'usuaris
                 </a>
             {% endif %}
+            {% if is_granted('ROLE_ADMIN') %} -
+                <a href ="{{ path('admin') }}">
+                    Easy Admin
+                </a>
+            {% endif %}
             {% if is_granted('IS_AUTHENTICATED_FULLY') %} - 
                 Benvingut/da {{ app.user.username }}!  -
                 <a href ="{{ path('logout') }}">
